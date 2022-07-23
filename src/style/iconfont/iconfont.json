@@ -1,0 +1,58 @@
+{
+  "id": "3507921",
+  "name": "shopping-mall",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "160206",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "1302470",
+      "name": "bell",
+      "font_class": "bell",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "12934633",
+      "name": "position-fill",
+      "font_class": "tubiaozhizuomoban-",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "330201",
+      "name": "my",
+      "font_class": "my",
+      "unicode": "e78b",
+      "unicode_decimal": 59275
+    },
+    {
+      "icon_id": "569478",
+      "name": "home",
+      "font_class": "home",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "1133210",
+      "name": "cart",
+      "font_class": "cart",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "9004951",
+      "name": "order",
+      "font_class": "order",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    }
+  ]
+}
