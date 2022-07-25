@@ -22,6 +22,7 @@ export default {
     const router = useRouter();
     const handleLogin = () => {
       //isLogin状态设置 跳转到Home Page
+
       localStorage.isLogin = true;
       router.push({ name: "Home" });
     };

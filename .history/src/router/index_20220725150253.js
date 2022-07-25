@@ -12,11 +12,6 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
-    beforeEnter: (to, from, next) => {
-      // 已经登陆的跳login page的直接回到Home page
-      const { isLogin } = localStorage
-      isLogin ? next({ name: 'Home'}) : next()
-    }
   },
 ];
 
