@@ -5,18 +5,13 @@
       src="http://www.dell-lee.com/imgs/vue3/user.png"
     />
     <div class="wrapper__input">
-      <input
-        class="wrapper__input__content"
-        placeholder="请输入用户名"
-        v-model="data.username"
-      />
+      <input class="wrapper__input__content" placeholder="请输入用户名" v-model="/>
     </div>
     <div class="wrapper__input">
       <input
         class="wrapper__input__content"
         placeholder="请输入密码"
         type="password"
-        v-model="data.password"
       />
     </div>
     <div class="wrapper__login-button" @click="handleLogin">登录</div>
@@ -28,7 +23,7 @@ import { useRouter } from "vue-router";
 import axios from "axios";
 import { reactive } from "vue";
 
-axios.defaults.headers.post["Content-Type"] = "application/json";
+axios.defaults.headers.post['Content-Type'] = 'application/json'
 
 export default {
   name: "Login",

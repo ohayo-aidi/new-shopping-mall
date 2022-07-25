@@ -5,19 +5,10 @@
       src="http://www.dell-lee.com/imgs/vue3/user.png"
     />
     <div class="wrapper__input">
-      <input
-        class="wrapper__input__content"
-        placeholder="请输入用户名"
-        v-model="data.username"
-      />
+      <input class="wrapper__input__content" placeholder="请输入手机号" />
     </div>
     <div class="wrapper__input">
-      <input
-        class="wrapper__input__content"
-        placeholder="请输入密码"
-        type="password"
-        v-model="data.password"
-      />
+      <input class="wrapper__input__content" placeholder="请输入密码" type="password"/>
     </div>
     <div class="wrapper__login-button" @click="handleLogin">登录</div>
     <div class="wrapper__login-link" @click="handleRegisterClick">注册</div>
@@ -25,42 +16,20 @@
 </template>
 <script>
 import { useRouter } from "vue-router";
-import axios from "axios";
-import { reactive } from "vue";
-
-axios.defaults.headers.post["Content-Type"] = "application/json";
-
+import axios
 export default {
   name: "Login",
   setup() {
     const router = useRouter();
     const handleLogin = () => {
-      axios
-        .post(
-          "https://www.fastmock.site/mock/8ee236b9be977eee65b73b9cd481d691/aiditest/api/user/login",
-          {
-            username: data.username,
-            password: data.password,
-          }
-        )
-        .then(() => {
-          // //isLogin状态设置&跳转到Home Page
-          localStorage.isLogin = true;
-          router.push({ name: "Home" });
-        })
-        .catch(() => {
-          alert("登录失败");
-        });
+      //isLogin状态设置&跳转到Home Page
+      localStorage.isLogin = true;
+      router.push({ name: "Home" });
     };
     const handleRegisterClick = () => {
       router.push({ name: "Register" });
     };
-
-    const data = reactive({
-      username: "",
-      password: "",
-    });
-    return { handleLogin, handleRegisterClick, data };
+    return { handleLogin,handleRegisterClick};
   },
 };
 </script>

@@ -5,18 +5,13 @@
       src="http://www.dell-lee.com/imgs/vue3/user.png"
     />
     <div class="wrapper__input">
-      <input
-        class="wrapper__input__content"
-        placeholder="请输入用户名"
-        v-model="data.username"
-      />
+      <input class="wrapper__input__content" placeholder="请输入手机号" />
     </div>
     <div class="wrapper__input">
       <input
         class="wrapper__input__content"
         placeholder="请输入密码"
         type="password"
-        v-model="data.password"
       />
     </div>
     <div class="wrapper__login-button" @click="handleLogin">登录</div>
@@ -27,9 +22,6 @@
 import { useRouter } from "vue-router";
 import axios from "axios";
 import { reactive } from "vue";
-
-axios.defaults.headers.post["Content-Type"] = "application/json";
-
 export default {
   name: "Login",
   setup() {
@@ -37,20 +29,18 @@ export default {
     const handleLogin = () => {
       axios
         .post(
-          "https://www.fastmock.site/mock/8ee236b9be977eee65b73b9cd481d691/aiditest/api/user/login",
+          "https://www.fastmock.site/#/project/8ee236b9be977eee65b73b9cd481d691/api/user/login",
           {
             username: data.username,
             password: data.password,
           }
         )
-        .then(() => {
-          // //isLogin状态设置&跳转到Home Page
-          localStorage.isLogin = true;
-          router.push({ name: "Home" });
+        .then( () => {
+                // //isLogin状态设置&跳转到Home Page
+      localStorage.isLogin = true;
+      router.push({ name: "Home" });
         })
-        .catch(() => {
-          alert("登录失败");
-        });
+        .catch();
     };
     const handleRegisterClick = () => {
       router.push({ name: "Register" });
