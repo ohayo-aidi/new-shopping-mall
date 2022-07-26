@@ -36,23 +36,17 @@ export default {
       username: "",
       password: "",
     });
-    const handleLogin = async () => {
-      //需要加上try catch 否则 请求地址写错了（ex：baseURL的地址写错）用户输入完账号密码却登录失败
-      try {
-        const result = await post("/api/user/login", {
-          username: data.username,
-          password: data.password,
-        });
-        if (result?.errno === 0) {
-          //result相当于返回的JSON整体
-          // //isLogin状态设置&跳转到Home Page
-          localStorage.isLogin = true;
-          router.push({ name: "Home" });
-        } else {
-          alert("登录失败");
-        }
-      } catch (e) {
-        alert("发送请求失败");
+    const handleLogin = async () => {//需要加上try catch 否则 请求z
+      const result = await post("/api/user/login", {
+        username: data.username,
+        password: data.password,
+      });
+      if (result?.errno === 0) {//result相当于返回的JSON整体
+        // //isLogin状态设置&跳转到Home Page
+        localStorage.isLogin = true;
+        router.push({ name: "Home" });
+      } else {
+        alert("登录失败");
       }
     };
     const handleRegisterClick = () => {

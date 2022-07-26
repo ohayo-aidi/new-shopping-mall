@@ -37,9 +37,9 @@ export default {
       password: "",
     });
     const handleLogin = async () => {
-      //需要加上try catch 否则 请求地址写错了（ex：baseURL的地址写错）用户输入完账号密码却登录失败
+      //需要加上try catch 否则 请求地址写错了（ex：/api/user/login222）用户输入完账号密码却登录失败
       try {
-        const result = await post("/api/user/login", {
+        const result = await post("/api/user/login22", {
           username: data.username,
           password: data.password,
         });

@@ -28,36 +28,39 @@ import { useRouter } from "vue-router";
 import { post } from "@/utils/request";
 import { reactive } from "vue";
 
+axios.defaults.headers.post["Content-Type"] = "application/json";
+
 export default {
   name: "Login",
   setup() {
     const router = useRouter();
-    const data = reactive({
-      username: "",
-      password: "",
-    });
-    const handleLogin = async () => {
-      //需要加上try catch 否则 请求地址写错了（ex：baseURL的地址写错）用户输入完账号密码却登录失败
-      try {
-        const result = await post("/api/user/login", {
-          username: data.username,
-          password: data.password,
-        });
-        if (result?.errno === 0) {
-          //result相当于返回的JSON整体
-          // //isLogin状态设置&跳转到Home Page
-          localStorage.isLogin = true;
-          router.push({ name: "Home" });
-        } else {
-          alert("登录失败");
-        }
-      } catch (e) {
-        alert("发送请求失败");
-      }
+    const handleLogin = () => {
+      const re
+      // axios
+      //   .post(
+      //     "https://www.fastmock.site/mock/8ee236b9be977eee65b73b9cd481d691/aiditest/api/user/login",
+      //     {
+      //       username: data.username,
+      //       password: data.password,
+      //     }
+      //   )
+      //   .then(() => {
+      //     // //isLogin状态设置&跳转到Home Page
+      //     localStorage.isLogin = true;
+      //     router.push({ name: "Home" });
+      //   })
+      //   .catch(() => {
+      //     alert("登录失败");
+      //   });
     };
     const handleRegisterClick = () => {
       router.push({ name: "Register" });
     };
+
+    const data = reactive({
+      username: "",
+      password: "",
+    });
     return { handleLogin, handleRegisterClick, data };
   },
 };
