@@ -22,7 +22,7 @@
     <div class="wrapper__login-button" @click="handleLogin">登录</div>
     <div class="wrapper__login-link" @click="handleRegisterClick">注册</div>
     <!--Toast组件-->
-    <Toast v-if="data.showToast" :message="data.toastMessage" />
+    <Toast v-if="data.showToast" :message="data.toastMessage"/>
   </div>
 </template>
 <script>
@@ -48,9 +48,9 @@ export default {
       data.toastMessage = message;
       setTimeout(() => {
         data.showToast = false;
-        data.toastMessage = "";
+        data.toastMessage = ''
       }, 2000);
-    };
+    }
 
     const handleLogin = async () => {
       //需要加上try catch 否则 请求地址写错了（ex：baseURL的地址写错）用户输入完账号密码却登录失败
@@ -65,12 +65,11 @@ export default {
           localStorage.isLogin = true;
           router.push({ name: "Home" });
         } else {
-          showToast("登陆失败");
+          showToast('')
           // alert("登录失败");
         }
       } catch (e) {
-        showToast("发送请求失败");
-        // alert("发送请求失败");
+        alert("发送请求失败");
       }
     };
     const handleRegisterClick = () => {
