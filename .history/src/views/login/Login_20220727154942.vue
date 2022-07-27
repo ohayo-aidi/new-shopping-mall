@@ -82,8 +82,7 @@ export default {
     const { username, password, handleLogin } = useLoginEffect(showToast); //少了showToast传参 error: showToast is not a function  Login模块需要Toast组件
     const { handleRegisterClick } = useRegisterEffect();
 
-    return {
-      //都导出去 不管template层用不用的到
+    return {//都到出去 不管template
       show,
       toastMessage,
       showToast,

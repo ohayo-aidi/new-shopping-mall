@@ -27,7 +27,7 @@ export const useToastEffect = () => {
   };
 
   const { show, toastMessage } = toRefs(toastData);
-  return { show, toastMessage, showToast };
+  return { toastData, showToast };
 };
 </script>
 <style lang="scss" scoped>

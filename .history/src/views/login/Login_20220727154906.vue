@@ -83,7 +83,6 @@ export default {
     const { handleRegisterClick } = useRegisterEffect();
 
     return {
-      //都导出去 不管template层用不用的到
       show,
       toastMessage,
       showToast,

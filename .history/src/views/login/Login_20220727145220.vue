@@ -8,7 +8,7 @@
       <input
         class="wrapper__input__content"
         placeholder="请输入用户名"
-        v-model="username"
+        v-model="data.username"
       />
     </div>
     <div class="wrapper__input">
@@ -16,25 +16,23 @@
         class="wrapper__input__content"
         placeholder="请输入密码"
         type="password"
-        v-model="password"
+        v-model="data.password"
       />
     </div>
     <div class="wrapper__login-button" @click="handleLogin">登录</div>
     <div class="wrapper__login-link" @click="handleRegisterClick">注册</div>
     <!--Toast组件-->
-    <Toast v-if="show" :message="toastMessage" />
+    <Toast v-if="toastData.showToast" :message="toastData.toastMessage" />
   </div>
 </template>
 <script>
-import { reactive, toRefs } from "vue";
 import { useRouter } from "vue-router";
 import { post } from "@/utils/request";
+import { reactive } from "vue";
 import Toast, { useToastEffect } from "@/components/Toast.vue";
 
 //处理登录逻辑
-const useLoginEffect = (showToast) => {
-  //登录模块需要弹窗组件模块（弹出登录失败）
-  const router = useRouter();
+const useLoginEffect = (showToast) => {//登录模块需要tan'chuan
   const data = reactive({
     username: "",
     password: "",
@@ -43,7 +41,7 @@ const useLoginEffect = (showToast) => {
   const handleLogin = async () => {
     //需要加上try catch 否则 请求地址写错了（ex：baseURL的地址写错）用户输入完账号密码却登录失败
     try {
-      const result = await post("/api/user/login222", {
+      const result = await post("/api/user/login", {
         username: data.username,
         password: data.password,
       });
@@ -61,37 +59,18 @@ const useLoginEffect = (showToast) => {
       // alert("发送请求失败");
     }
   };
-
-  const { username, password } = toRefs(data); //将data解构 以便template层可直接使用 username password
-  return { username, password, handleLogin }; //数据 函数 都导出去
-};
-
-//登录页面跳注册页面的逻辑
-const useRegisterEffect = () => {
-  const router = useRouter();
-  const handleRegisterClick = () => {
-    router.push({ name: "Register" });
-  };
-  return { handleRegisterClick };
 };
 export default {
   name: "Login",
   components: { Toast },
   setup() {
-    const { show, toastMessage, showToast } = useToastEffect();
-    const { username, password, handleLogin } = useLoginEffect(showToast); //少了showToast传参 error: showToast is not a function  Login模块需要Toast组件
-    const { handleRegisterClick } = useRegisterEffect();
+    const router = useRouter();
+    const { toastData, showToast } = useToastEffect();
 
-    return {
-      //都导出去 不管template层用不用的到
-      show,
-      toastMessage,
-      showToast,
-      username,
-      password,
-      handleLogin,
-      handleRegisterClick,
+    const handleRegisterClick = () => {
+      router.push({ name: "Register" });
     };
+    return { handleLogin, handleRegisterClick, data, toastData };
   },
 };
 </script>

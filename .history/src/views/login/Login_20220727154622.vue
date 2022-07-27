@@ -72,18 +72,17 @@ const useRegisterEffect = () => {
   const handleRegisterClick = () => {
     router.push({ name: "Register" });
   };
-  return { handleRegisterClick };
+  return { handleRegisterClick }
 };
 export default {
   name: "Login",
   components: { Toast },
   setup() {
-    const { show, toastMessage, showToast } = useToastEffect();
-    const { username, password, handleLogin } = useLoginEffect(showToast); //少了showToast传参 error: showToast is not a function  Login模块需要Toast组件
+    const {}
+    const { username, password, handleLogin } = useLoginEffect();
     const { handleRegisterClick } = useRegisterEffect();
 
     return {
-      //都导出去 不管template层用不用的到
       show,
       toastMessage,
       showToast,

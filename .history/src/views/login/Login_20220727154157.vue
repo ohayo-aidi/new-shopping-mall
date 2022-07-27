@@ -26,9 +26,10 @@
   </div>
 </template>
 <script>
-import { reactive, toRefs } from "vue";
 import { useRouter } from "vue-router";
 import { post } from "@/utils/request";
+import { reactive, toRefs } from "vue";
+import { reactive, toRefs } from "vue";
 import Toast, { useToastEffect } from "@/components/Toast.vue";
 
 //处理登录逻辑
@@ -72,18 +73,17 @@ const useRegisterEffect = () => {
   const handleRegisterClick = () => {
     router.push({ name: "Register" });
   };
-  return { handleRegisterClick };
+  return { handleRegisterClick }
 };
 export default {
   name: "Login",
   components: { Toast },
   setup() {
     const { show, toastMessage, showToast } = useToastEffect();
-    const { username, password, handleLogin } = useLoginEffect(showToast); //少了showToast传参 error: showToast is not a function  Login模块需要Toast组件
+    const { username, password, handleLogin } = useLoginEffect();
     const { handleRegisterClick } = useRegisterEffect();
 
     return {
-      //都导出去 不管template层用不用的到
       show,
       toastMessage,
       showToast,

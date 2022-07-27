@@ -26,9 +26,9 @@
   </div>
 </template>
 <script>
-import { reactive, toRefs } from "vue";
 import { useRouter } from "vue-router";
 import { post } from "@/utils/request";
+import { reactive } from "vue";
 import Toast, { useToastEffect } from "@/components/Toast.vue";
 
 //处理登录逻辑
@@ -43,7 +43,7 @@ const useLoginEffect = (showToast) => {
   const handleLogin = async () => {
     //需要加上try catch 否则 请求地址写错了（ex：baseURL的地址写错）用户输入完账号密码却登录失败
     try {
-      const result = await post("/api/user/login222", {
+      const result = await post("/api/user/login", {
         username: data.username,
         password: data.password,
       });
@@ -72,18 +72,17 @@ const useRegisterEffect = () => {
   const handleRegisterClick = () => {
     router.push({ name: "Register" });
   };
-  return { handleRegisterClick };
+  return { handleRegisterClick }
 };
 export default {
   name: "Login",
   components: { Toast },
   setup() {
     const { show, toastMessage, showToast } = useToastEffect();
-    const { username, password, handleLogin } = useLoginEffect(showToast); //少了showToast传参 error: showToast is not a function  Login模块需要Toast组件
-    const { handleRegisterClick } = useRegisterEffect();
+    const { username, password, handleLogin } = useLoginEffect();
+    const {}
 
     return {
-      //都导出去 不管template层用不用的到
       show,
       toastMessage,
       showToast,

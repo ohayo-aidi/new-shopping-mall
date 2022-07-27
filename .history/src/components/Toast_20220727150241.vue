@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import { reactive, toRefs } from "vue";
+import { reactive, toRefs } from 'vue'
 
 export default {
   name: "Toast",
@@ -27,7 +27,7 @@ export const useToastEffect = () => {
   };
 
   const { show, toastMessage } = toRefs(toastData);
-  return { show, toastMessage, showToast };
+  return { toastData, showToast };
 };
 </script>
 <style lang="scss" scoped>

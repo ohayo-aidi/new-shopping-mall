@@ -79,11 +79,10 @@ export default {
   components: { Toast },
   setup() {
     const { show, toastMessage, showToast } = useToastEffect();
-    const { username, password, handleLogin } = useLoginEffect(showToast); //少了showToast传参 error: showToast is not a function  Login模块需要Toast组件
+    const { username, password, handleLogin } = useLoginEffect(showToast); //少了showToast传参 error  Login模块需要Toast组件
     const { handleRegisterClick } = useRegisterEffect();
 
     return {
-      //都导出去 不管template层用不用的到
       show,
       toastMessage,
       showToast,
