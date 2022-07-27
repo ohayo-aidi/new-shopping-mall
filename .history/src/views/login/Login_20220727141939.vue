@@ -22,7 +22,7 @@
     <div class="wrapper__login-button" @click="handleLogin">登录</div>
     <div class="wrapper__login-link" @click="handleRegisterClick">注册</div>
     <!--Toast组件-->
-    <Toast v-if="toastData.showToast" :message="toastData.toastMessage" />
+    <Toast v-if="data.showToast" :message="data.toastMessage" />
   </div>
 </template>
 <script>
@@ -40,8 +40,7 @@ export default {
       username: "",
       password: "",
     });
-
-    const { toastData, showToast } = useToastEffect()
+    
 
     const handleLogin = async () => {
       //需要加上try catch 否则 请求地址写错了（ex：baseURL的地址写错）用户输入完账号密码却登录失败
@@ -67,7 +66,7 @@ export default {
     const handleRegisterClick = () => {
       router.push({ name: "Register" });
     };
-    return { handleLogin, handleRegisterClick, data, toastData };
+    return { handleLogin, handleRegisterClick, data };
   },
 };
 </script>

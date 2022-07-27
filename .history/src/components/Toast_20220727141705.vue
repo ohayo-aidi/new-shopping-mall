@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import { reactive } from 'vue'
+import { setTimeout } from "timers";
 
 export default {
   name: "Toast",
@@ -25,7 +25,7 @@ export const useToastEffect = () => {
       toastData.toastMessage = "";
     }, 2000);
   };
-
+  
   return { toastData, showToast };
 };
 </script>

@@ -22,7 +22,7 @@
     <div class="wrapper__login-button" @click="handleLogin">登录</div>
     <div class="wrapper__login-link" @click="handleRegisterClick">注册</div>
     <!--Toast组件-->
-    <Toast v-if="toastData.showToast" :message="toastData.toastMessage" />
+    <Toast v-if="data.showToast" :message="toast.toastMessage" />
   </div>
 </template>
 <script>

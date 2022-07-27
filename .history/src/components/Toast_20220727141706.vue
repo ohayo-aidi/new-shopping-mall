@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import { reactive } from 'vue'
+import { setTimeout } from "timers";
 
 export default {
   name: "Toast",

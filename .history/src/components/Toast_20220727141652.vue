@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import { reactive } from 'vue'
+import { setTimeout } from 'timers';
 
 export default {
   name: "Toast",
@@ -18,15 +18,14 @@ export const useToastEffect = () => {
   });
 
   const showToast = (message) => {
-    toastData.showToast = true;
-    toastData.toastMessage = message;
+    toastData.showToast = true
+    toastData.toastMessage = message
     setTimeout(() => {
-      toastData.showToast = false;
-      toastData.toastMessage = "";
+        toastData.showToast = false
+        toastData.toastMessage = ''
     }, 2000);
-  };
-
-  return { toastData, showToast };
+  }
+  return { toa}
 };
 </script>
 <style lang="scss" scoped>

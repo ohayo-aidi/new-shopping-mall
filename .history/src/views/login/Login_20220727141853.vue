@@ -22,14 +22,14 @@
     <div class="wrapper__login-button" @click="handleLogin">登录</div>
     <div class="wrapper__login-link" @click="handleRegisterClick">注册</div>
     <!--Toast组件-->
-    <Toast v-if="toastData.showToast" :message="toastData.toastMessage" />
+    <Toast v-if="data.showToast" :message="data.toastMessage"/>
   </div>
 </template>
 <script>
 import { useRouter } from "vue-router";
 import { post } from "@/utils/request";
 import { reactive } from "vue";
-import Toast, { useToastEffect } from "@/components/Toast.vue";
+import Toast, { } from "@/components/Toast.vue";
 
 export default {
   name: "Login",
@@ -39,9 +39,18 @@ export default {
     const data = reactive({
       username: "",
       password: "",
+      showToast: false,
+      toastMessage: "",
     });
 
-    const { toastData, showToast } = useToastEffect()
+    const showToast = (message) => {
+      data.showToast = true;
+      data.toastMessage = message;
+      setTimeout(() => {
+        data.showToast = false;
+        data.toastMessage = "";
+      }, 2000);
+    };
 
     const handleLogin = async () => {
       //需要加上try catch 否则 请求地址写错了（ex：baseURL的地址写错）用户输入完账号密码却登录失败
@@ -67,7 +76,7 @@ export default {
     const handleRegisterClick = () => {
       router.push({ name: "Register" });
     };
-    return { handleLogin, handleRegisterClick, data, toastData };
+    return { handleLogin, handleRegisterClick, data };
   },
 };
 </script>

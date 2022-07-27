@@ -4,8 +4,6 @@
   </div>
 </template>
 <script>
-import { reactive } from 'vue'
-
 export default {
   name: "Toast",
   props: ["message"],
@@ -17,16 +15,9 @@ export const useToastEffect = () => {
     toastMessage: "",
   });
 
-  const showToast = (message) => {
-    toastData.showToast = true;
-    toastData.toastMessage = message;
-    setTimeout(() => {
-      toastData.showToast = false;
-      toastData.toastMessage = "";
-    }, 2000);
-  };
+  const showToast = (me) => {
 
-  return { toastData, showToast };
+  }
 };
 </script>
 <style lang="scss" scoped>
