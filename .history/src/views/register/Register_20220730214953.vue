@@ -5,18 +5,13 @@
       src="http://www.dell-lee.com/imgs/vue3/user.png"
     />
     <div class="wrapper__input">
-      <input
-        class="wrapper__input__content"
-        placeholder="请输入用户名"
-        v-model="username"
-      />
+      <input class="wrapper__input__content" placeholder="请输入用户名"  />
     </div>
     <div class="wrapper__input">
       <input
         class="wrapper__input__content"
         placeholder="请输入密码"
         type="password"
-        v-model="password"
       />
     </div>
     <div class="wrapper__input">
@@ -24,10 +19,9 @@
         class="wrapper__input__content"
         placeholder="确认密码"
         type="password"
-        v-model="ensurement"
       />
     </div>
-    <div class="wrapper__login-button" @click="handleRegister">注册</div>
+    <div class="wrapper__login-button">注册</div>
     <div class="wrapper__login-link" @click="handleLoginClick">
       已有账号去登陆
     </div>
@@ -37,11 +31,9 @@
 <script>
 import { reactive, toRefs } from "vue";
 import { useRouter } from "vue-router";
-import { post } from "@/utils/request";
 import Toast, { useToastEffect } from "@/components/Toast.vue";
 //处理注册逻辑(需要Toast组件)
 const useRegisterEffect = (showToast) => {
-  const router = useRouter();
   const data = reactive({
     username: "",
     password: "",

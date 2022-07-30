@@ -41,7 +41,7 @@ import { post } from "@/utils/request";
 import Toast, { useToastEffect } from "@/components/Toast.vue";
 //处理注册逻辑(需要Toast组件)
 const useRegisterEffect = (showToast) => {
-  const router = useRouter();
+  const router = use
   const data = reactive({
     username: "",
     password: "",

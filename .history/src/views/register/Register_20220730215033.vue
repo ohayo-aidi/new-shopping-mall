@@ -24,10 +24,10 @@
         class="wrapper__input__content"
         placeholder="确认密码"
         type="password"
-        v-model="ensurement"
+        v-model="enus"
       />
     </div>
-    <div class="wrapper__login-button" @click="handleRegister">注册</div>
+    <div class="wrapper__login-button">注册</div>
     <div class="wrapper__login-link" @click="handleLoginClick">
       已有账号去登陆
     </div>
@@ -37,11 +37,9 @@
 <script>
 import { reactive, toRefs } from "vue";
 import { useRouter } from "vue-router";
-import { post } from "@/utils/request";
 import Toast, { useToastEffect } from "@/components/Toast.vue";
 //处理注册逻辑(需要Toast组件)
 const useRegisterEffect = (showToast) => {
-  const router = useRouter();
   const data = reactive({
     username: "",
     password: "",
