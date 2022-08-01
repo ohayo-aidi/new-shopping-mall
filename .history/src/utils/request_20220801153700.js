@@ -6,23 +6,13 @@ const instance = axios.create({
   timeout: 5000,
 });
 
-export const get = (url, params = {}) => {
-  return new Promise((resolve, reject) => {
-    instance.get(url, { params }).then(
-      (response) => {
-        resolve(response.data);
-      },
-      (err) => {
-        reject(err);
-      }
-    );
-  });
-};
-
+export const get = ( url)
 export const post = (url, data = {}) => {
   return new Promise((resolve, reject) => {
-    instance
+    axios
       .post(url, data, {
+        baseURL:
+          "https://www.fastmock.site/mock/8ee236b9be977eee65b73b9cd481d691/aiditest",
         headers: {
           "Content-Type": "application/json",
         },

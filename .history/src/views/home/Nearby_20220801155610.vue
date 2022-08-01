@@ -12,21 +12,20 @@
           <span class="nearby__content__tag">基础运费: {{item.expressPrice}}</span>
         </div>
         <span class="nearby__item__content__highlight">
-          {{ item.slogan }}
+          {{ item.desc }}
         </span>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { reactive, toRefs, ref} from "vue";
+import { reactive, toRefs } from "vue";
 import { get } from "@/utils/request";
 
 const useNearbyListEffect = () => {
   const nearbyList = ref([]);
   const getNearbyList = async () => {
     const result = await get("/api/shop/hot-list");
-    // console.log(result.data)
     if (result?.errno === 0 && result?.data?.length) {
       nearbyList.value = result.data;
     }
