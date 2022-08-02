@@ -11,8 +11,8 @@ const routes = [
   },
   {
     path: "/shop",
-    name: "Shop",
-    component: () => import(/* webpackChunkName: "shop33" */ '@/views/shop/Shop'),//控制台查看js区可看到shop33什么时候被加载
+    name: "Home",
+    component: Home,
   },
   {
     path: "/login",

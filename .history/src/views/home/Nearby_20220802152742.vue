@@ -1,13 +1,12 @@
 <template>
   <div class="nearby">
     <h3 class="nearby__title">附近店铺</h3>
-    <ShopInfo v-for="item in nearbyList" :key="item._id" :item="item" />
+
   </div>
 </template>
 <script>
-import { reactive, toRefs, ref } from "vue";
+import { reactive, toRefs, ref} from "vue";
 import { get } from "@/utils/request";
-import ShopInfo from "@/components/ShopInfo.vue";
 
 const useNearbyListEffect = () => {
   const nearbyList = ref([]);
@@ -22,7 +21,6 @@ const useNearbyListEffect = () => {
 };
 export default {
   name: "Nearby",
-  components: { ShopInfo },
   setup() {
     const { nearbyList, getNearbyList } = useNearbyListEffect();
     getNearbyList();
@@ -38,6 +36,40 @@ export default {
     margin: 0.16rem 0 0.02rem 0;
     font-weight: normal; //是否加粗字体
     color: $content-fontcolor;
+  }
+  &__item {
+    display: flex; //不换行
+    padding-top: 0.12rem;
+    &__img {
+      width: 0.6rem;
+      height: 0.6rem;
+      padding-right: 0.16rem;
+    }
+    &__content {
+      padding-bottom: 0.12rem;
+      border-bottom: 0.01rem solid $content-bgColor;
+      //flex: 1;
+      &__title {
+        font-size: 0.16rem;
+        line-height: 0.22rem;
+        color: $content-fontcolor;
+      }
+      &__tags {
+        margin-top: 0.08rem;
+        font-size: 0.13rem;
+        color: $content-fontcolor;
+        line-height: 0.18rem;
+      }
+      &__tag {
+        padding-right: 0.16rem;
+      }
+      &__highlight {
+        padding: 0.08rem 0 0 0;
+        line-height: 0.18rem;
+        font-size: 0.13rem;
+        color: $content-highlight;
+      }
+    }
   }
 }
 </style>

@@ -1,13 +1,13 @@
 <template>
   <div class="nearby">
     <h3 class="nearby__title">附近店铺</h3>
-    <ShopInfo v-for="item in nearbyList" :key="item._id" :item="item" />
+    
   </div>
 </template>
 <script>
-import { reactive, toRefs, ref } from "vue";
+import { reactive, toRefs, ref} from "vue";
 import { get } from "@/utils/request";
-import ShopInfo from "@/components/ShopInfo.vue";
+
 
 const useNearbyListEffect = () => {
   const nearbyList = ref([]);
@@ -21,13 +21,13 @@ const useNearbyListEffect = () => {
   return { nearbyList, getNearbyList };
 };
 export default {
-  name: "Nearby",
-  components: { ShopInfo },
-  setup() {
-    const { nearbyList, getNearbyList } = useNearbyListEffect();
-    getNearbyList();
-    return { nearbyList, getNearbyList };
-  },
+    name: "Nearby",
+    setup() {
+        const { nearbyList, getNearbyList } = useNearbyListEffect();
+        getNearbyList();
+        return { nearbyList, getNearbyList };
+    },
+    components: { ShopInfo }
 };
 </script>
 <style lang="scss" scoped>
@@ -39,5 +39,6 @@ export default {
     font-weight: normal; //是否加粗字体
     color: $content-fontcolor;
   }
+
 }
 </style>
