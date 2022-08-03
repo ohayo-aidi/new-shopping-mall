@@ -1,1 +1,1 @@
-7.4 first start
+### The jump function is not added to the "附近店铺"
