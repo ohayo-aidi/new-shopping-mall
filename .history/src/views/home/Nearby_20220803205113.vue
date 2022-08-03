@@ -41,8 +41,5 @@ export default {
     font-weight: normal; //是否加粗字体
     color: $content-fontcolor;
   }
-  a {
-    text-decoration: none;
-  }
 }
 </style>

@@ -1,23 +1,21 @@
 <template>
   <div class="wrapper">
     <div class="search">
-      <div class="search__back iconfont" @click="handleBackClick">&#xe78b;</div>
+      <div class="search__back iconfont">&#xe78b;</div>
       <div class="search__content">
         <span class="search__content__icon iconfont">&#xe604;</span>
-        <input class="search__content__input" placeholder="请输入商品名称"/>
+        <input class="search__content__input"/>
       </div>
     </div>
     <ShopInfo :item="item" />
   </div>
 </template>
 <script>
-import { useRouter } from 'vue-router'
 import ShopInfo from "@/components/ShopInfo.vue";
 export default {
   name: "Shop",
   components: { ShopInfo },
   setup() {
-    const router = useRouter()
     const item = {
       _id: "1",
       name: "沃尔玛",
@@ -27,10 +25,7 @@ export default {
       expressPrice: 5,
       slogan: "VIP尊享满89元减4元运费券",
     };
-    const handleBackClick = () => {
-      router.back()
-    }
-    return { item, handleBackClick };
+    return { item };
   },
 };
 </script>
@@ -40,7 +35,6 @@ export default {
 }
 .search{
   display: flex;
-  flex: 1;
   margin: .2rem 0 .16rem 0;
   line-height: .32rem;
   &__back{
@@ -49,25 +43,13 @@ export default {
     color: #B6B6B6;
   }
   &__content{
-    display: flex;
+    display: fe;
     flex: 1;
-    background: #F5F5F5;
-    border-radius: .16rem;
     &__icon{
-      text-align: center;
-      width: .44rem;
-      color: #B7B7B7;
+
     }
     &__input{
-      width: 100%;
-      border: none;
-      outline: none;
-      background: none;
-      padding-top: .05rem;
-      font-size: .14rem;
-      &::placeholder{
-        color: #333;
-      }
+
     }
   }
 }

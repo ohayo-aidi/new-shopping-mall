@@ -30,7 +30,7 @@ export default {
     const handleBackClick = () => {
       router.back()
     }
-    return { item, handleBackClick };
+    return { item, };
   },
 };
 </script>

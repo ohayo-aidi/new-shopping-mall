@@ -28,9 +28,9 @@ export default {
       slogan: "VIP尊享满89元减4元运费券",
     };
     const handleBackClick = () => {
-      router.back()
+      royter.back()
     }
-    return { item, handleBackClick };
+    return { item };
   },
 };
 </script>

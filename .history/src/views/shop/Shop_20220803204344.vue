@@ -11,13 +11,11 @@
   </div>
 </template>
 <script>
-import { useRouter } from 'vue-router'
 import ShopInfo from "@/components/ShopInfo.vue";
 export default {
   name: "Shop",
   components: { ShopInfo },
   setup() {
-    const router = useRouter()
     const item = {
       _id: "1",
       name: "沃尔玛",
@@ -27,10 +25,8 @@ export default {
       expressPrice: 5,
       slogan: "VIP尊享满89元减4元运费券",
     };
-    const handleBackClick = () => {
-      router.back()
-    }
-    return { item, handleBackClick };
+    const handleBackClick = 
+    return { item };
   },
 };
 </script>

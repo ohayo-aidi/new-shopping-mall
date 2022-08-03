@@ -42,7 +42,7 @@ export default {
     color: $content-fontcolor;
   }
   a {
-    text-decoration: none;
+    text
   }
 }
 </style>
