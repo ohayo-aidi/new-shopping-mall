@@ -10,7 +10,7 @@ const routes = [
     component: Home,
   },
   {
-    path: "/shop/:id",//依据路由id不同跳转不同的页面
+    path: "/shop/:id",//依据id不同跳转不同的
     name: "Shop",
     component: () => import(/* webpackChunkName: "shop33" */ '@/views/shop/Shop'),//控制台查看js区可看到shop33什么时候被加载
   },

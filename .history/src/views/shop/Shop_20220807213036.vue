@@ -32,27 +32,23 @@ const useShopInfoEffect = () => {
     }
   };
   const { item } = toRefs(data);
-  return { item, getItemData };
+  return { item, getItemData}
 };
-
 //点击回退的逻辑
-const useBackRouterEffect = () => {
-  const router = useRouter();
-  const handleBackClick = () => {
-    router.back();
-  };
-  return {handleBackClick}
-};
 export default {
   name: "Shop",
   components: { ShopInfo },
   setup() {
     //1.获取当前商铺信息并立刻执行
     //2.处理回退按钮的逻辑
-    const { item, getItemData } = useShopInfoEffect();
-    const {handleBackClick} = useBackRouterEffect();
+    const router = useRouter();
+    const route = useRoute(); //包含当前路由的一些信息（比如URL里的id）
+    const {item, getItemData} = usesho
     getItemData();
-    return { item, getItemData, handleBackClick };
+    const handleBackClick = () => {
+      router.back();
+    };
+    return { data, getItemData, handleBackClick };
   },
 };
 </script>
