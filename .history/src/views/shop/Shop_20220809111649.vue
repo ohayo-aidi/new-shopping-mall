@@ -17,6 +17,7 @@ import { useRouter, useRoute } from "vue-router";
 import ShopInfo from "@/components/ShopInfo.vue";
 import { get } from "@/utils/request";
 import Content from '@/views/shop/Content.vue'
+import Content from "@/views/shop/Content.vue";
 //获取当前商铺信息
 const useShopInfoEffect = () => {
   const router = useRouter();

@@ -8,7 +8,6 @@
       </div>
     </div>
     <ShopInfo :item="item" />
-    <Content/>
   </div>
 </template>
 <script>
@@ -16,7 +15,7 @@ import { reactive, toRefs } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import ShopInfo from "@/components/ShopInfo.vue";
 import { get } from "@/utils/request";
-import Content from '@/views/shop/Content.vue'
+import Content from ''
 //获取当前商铺信息
 const useShopInfoEffect = () => {
   const router = useRouter();
@@ -47,7 +46,7 @@ const useBackRouterEffect = () => {
 };
 export default {
   name: "Shop",
-  components: { ShopInfo, Content },
+  components: { ShopInfo },
   setup() {
     //1.获取当前商铺信息并立刻执行
     //2.处理回退按钮的逻辑
