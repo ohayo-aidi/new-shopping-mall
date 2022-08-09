@@ -39,7 +39,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "@/style/mixins.scss";
 .content {
   display: flex;
   position: absolute;
@@ -72,9 +71,6 @@ export default {
     display: flex;
     margin: 0.12rem 0.16rem;
     border-bottom: 0.01rem, solid #f1f1f1;
-    &__detail {
-      @include ellipsis;//父级超出省略 防止子集省略 父级却超出
-    }
     &__img {
       width: 0.68rem;
       height: 0.68rem;
@@ -85,7 +81,6 @@ export default {
       line-height: 0.2rem;
       font-size: 0.14rem;
       color: #333;
-      @include ellipsis;//子集本身超出则省略
     }
     &__sales {
       margin: 0.06rem 0;
@@ -112,25 +107,18 @@ export default {
       position: absolute;
       right: 0;
       bottom: 0.12rem;
-      &__minus,
-      &__plus {
+      &__minus, &__plus{
         display: inline-block;
-        width: 0.2rem;
-        height: 0.2rem;
-        font-size: 0.2rem;
-        line-height: 0.16rem;
-        border-radius: 50%; //变成圆形
+        width: .2rem;
+        height: .2rem;
+        font-size: .2rem;
+        line-height: .16rem;
+        border-radius: 50%;
         text-align: center;
       }
-      &__minus {
-        border: 0.01rem solid #666;
-        color: #666;
-        margin-right: 0.05rem;
-      }
-      &__plus {
-        background: #0091ff;
-        color: #fff;
-        margin-left: 0.05rem;
+      &__minus{
+        border: .01rem solid #666;
+        color:
       }
     }
   }

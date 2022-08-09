@@ -85,7 +85,7 @@ export default {
       line-height: 0.2rem;
       font-size: 0.14rem;
       color: #333;
-      @include ellipsis;//子集本身超出则省略
+      @include ellipsis;//zi'ji
     }
     &__sales {
       margin: 0.06rem 0;

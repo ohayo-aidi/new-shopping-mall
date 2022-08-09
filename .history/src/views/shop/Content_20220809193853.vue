@@ -11,6 +11,7 @@
     </div>
     <div class="product">
       <div class="product__item">
+
         <img
           class="product__item__img"
           src="http://www.dell-lee.com/imgs/vue3/near.png"
@@ -24,11 +25,7 @@
           </p>
         </div>
 
-        <div class="product__item__number">
-          <span class="product__item__number__minus">-</span>
-          0
-          <span class="product__item__number__plus">+</span>
-        </div>
+        <div class=""></div>
       </div>
     </div>
   </div>
@@ -39,7 +36,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "@/style/mixins.scss";
 .content {
   display: flex;
   position: absolute;
@@ -68,13 +64,10 @@ export default {
   overflow-y: scroll;
   flex: 1;
   &__item {
-    position: relative;
     display: flex;
+    // padding: 0.12rem 0;
     margin: 0.12rem 0.16rem;
     border-bottom: 0.01rem, solid #f1f1f1;
-    &__detail {
-      @include ellipsis;//父级超出省略 防止子集省略 父级却超出
-    }
     &__img {
       width: 0.68rem;
       height: 0.68rem;
@@ -82,56 +75,30 @@ export default {
     }
     &__title {
       margin: 0;
-      line-height: 0.2rem;
-      font-size: 0.14rem;
-      color: #333;
-      @include ellipsis;//子集本身超出则省略
-    }
-    &__sales {
-      margin: 0.06rem 0;
-      font-size: 0.12rem;
+      line-height: .2rem;
+      font-size: .14rem;
       color: #333;
     }
-    &__price {
+    &__sales{
+      margin: .06rem 0;
+      font-size: .12rem;
+      color: #333;
+    }
+    &__price{
       margin: 0;
-      line-height: 0.2rem;
-      font-size: 0.14rem;
-      color: #e93b3b;
+      line-height: .2rem;
+      font-size: .14rem;
+      color: #E93B3B;
     }
-    &__yen {
-      font-size: 0.12rem;
+    &__yen{
+      font-size: .12rem;
     }
-    &__origin {
-      margin-left: 0.06rem;
-      line-height: 0.2rem;
-      font-size: 0.12rem;
+    &__origin{
+      margin-left: .06rem;
+      line-height: .2rem;
+      font-size: .12rem;
       color: #999;
       text-decoration: line-through;
-    }
-    &__number {
-      position: absolute;
-      right: 0;
-      bottom: 0.12rem;
-      &__minus,
-      &__plus {
-        display: inline-block;
-        width: 0.2rem;
-        height: 0.2rem;
-        font-size: 0.2rem;
-        line-height: 0.16rem;
-        border-radius: 50%; //变成圆形
-        text-align: center;
-      }
-      &__minus {
-        border: 0.01rem solid #666;
-        color: #666;
-        margin-right: 0.05rem;
-      }
-      &__plus {
-        background: #0091ff;
-        color: #fff;
-        margin-left: 0.05rem;
-      }
     }
   }
 }

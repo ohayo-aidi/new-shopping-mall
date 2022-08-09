@@ -73,7 +73,7 @@ export default {
     margin: 0.12rem 0.16rem;
     border-bottom: 0.01rem, solid #f1f1f1;
     &__detail {
-      @include ellipsis;//父级超出省略 防止子集省略 父级却超出
+      @include ellipsis;//父级超出省略 防止子集省略父级
     }
     &__img {
       width: 0.68rem;
@@ -85,7 +85,7 @@ export default {
       line-height: 0.2rem;
       font-size: 0.14rem;
       color: #333;
-      @include ellipsis;//子集本身超出则省略
+      @include ellipsis;
     }
     &__sales {
       margin: 0.06rem 0;
