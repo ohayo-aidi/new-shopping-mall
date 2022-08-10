@@ -22,11 +22,11 @@
           src="http://www.dell-lee.com/imgs/vue3/near.png"
         />
         <div class="product__item__detail">
-          <h4 class="product__item__title">{{ item.name }}</h4>
-          <p class="product__item__sales">月售{{item.sales}}件</p>
+          <h4 class="product__item__title"></h4>
+          <p class="product__item__sales">月售10件</p>
           <p class="product__item__price">
-            <span class="product__item__yen">&yen;{{item.price}}</span>
-            <span class="product__item__origin">&yen;{{item.oldPrice}}</span>
+            <span class="product__item__yen">&yen;33.6</span>
+            <span class="product__item__origin">&yen;66.6</span>
           </p>
         </div>
 

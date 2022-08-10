@@ -26,7 +26,7 @@
           <p class="product__item__sales">月售{{item.sales}}件</p>
           <p class="product__item__price">
             <span class="product__item__yen">&yen;{{item.price}}</span>
-            <span class="product__item__origin">&yen;{{item.oldPrice}}</span>
+            <span class="product__item__origin">&yen;</span>
           </p>
         </div>
 

@@ -2,7 +2,7 @@
   <div class="content">
     <div class="category">
       <div 
-      :class="{'category__item': true , 'category__item--active': item.tab === currentTab }"
+      :class="{'category__item': true , 'category__item--active': item.tab ===  }"
       v-for="item in categories"
       :key="item.name"
       @click="() => handleCategoryClick(item.tab)"
@@ -14,19 +14,18 @@
     <div class="product">
       <div 
       class="product__item"
-      v-for="item in contentList"
-      :key="item._id"
+      
       >
         <img
           class="product__item__img"
           src="http://www.dell-lee.com/imgs/vue3/near.png"
         />
         <div class="product__item__detail">
-          <h4 class="product__item__title">{{ item.name }}</h4>
-          <p class="product__item__sales">月售{{item.sales}}件</p>
+          <h4 class="product__item__title">番茄250g/份</h4>
+          <p class="product__item__sales">月售10件</p>
           <p class="product__item__price">
-            <span class="product__item__yen">&yen;{{item.price}}</span>
-            <span class="product__item__origin">&yen;{{item.oldPrice}}</span>
+            <span class="product__item__yen">&yen;33.6</span>
+            <span class="product__item__origin">&yen;66.6</span>
           </p>
         </div>
 
@@ -63,7 +62,7 @@ export default {
         data.currentTab = tab
         getContentData(tab)
     }
-    const getContentData = async (tab) => {//获取一次当前tab的商家
+    const getContentData = async (tab) => {
         const result = await get('/api/shop/77/product', {tab})
         if(result?.errno === 0 && result?.data?.length){
             data.contentList = result.data
@@ -71,8 +70,6 @@ export default {
     }
     getContentData('all')
     const {currentTab,contentList} = toRefs(data)
-
-
     return {categories, currentTab, contentList, handleCategoryClick}
   },
 };
