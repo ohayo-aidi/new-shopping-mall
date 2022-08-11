@@ -9,7 +9,7 @@
     </div>
     <ShopInfo :item="item" />
     <Content/>
-    <Cart/>
+    <
   </div>
 </template>
 <script>
@@ -49,7 +49,7 @@ const useBackRouterEffect = () => {
 };
 export default {
   name: "Shop",
-  components: { ShopInfo, Content, Cart },
+  components: { ShopInfo, Content },
   setup() {
     //1.获取当前商铺信息并立刻执行
     //2.处理回退按钮的逻辑
