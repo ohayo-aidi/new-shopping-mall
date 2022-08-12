@@ -41,11 +41,7 @@
 import { ref, reactive, toRefs, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import { get } from "@/utils/request";
-const categories = [//放在第一位 因为马上就用到了 error: 'categories' is not defined
-  { name: "全部商品", tab: "all" },
-  { name: "秒杀", tab: "seckill" },
-  { name: "新鲜水果", tab: "fruit" },
-];
+
 //Tab的相关逻辑
 const useTabEffect = () => {
   const currentTab = ref(categories[0].tab);
@@ -59,30 +55,30 @@ const useTabEffect = () => {
 const useCurrentListEffect = (currentTab) => {
   const route = useRoute();
   const shopId = route.params.id;
-  const content = reactive({ list: [] });
+  const content = reactive({ list: [] })
 
   const getContentData = async () => {
     const result = await get(`/api/shop/${shopId}/product`, {
-      tab: currentTab.value,
-    });
-    if (result?.errno === 0 && result?.data?.length) {
-      content.list = result.data;
+      tab: currentTab.value
+    })
+    if(result?.errno === 0 && result?.data?.length) {
+      content.list = result.data
     }
-  };
+  }
 
-  watchEffect(() => {
-    getContentData();
-  });
-
-  const { list } = toRefs(content);
-  return { list };
+  watchEffect( () => { getContentData })
+  
+  const { list } = toRefs(content)
+  return {list}
 };
 export default {
   name: "Content",
   setup() {
+
     const { currentTab, handleTabClick } = useTabEffect();
     const { list } = useCurrentListEffect(currentTab);
-    return { categories, currentTab, handleTabClick, list };
+
+    return { currentTab, handleTabClick, list };
   },
 };
 </script>

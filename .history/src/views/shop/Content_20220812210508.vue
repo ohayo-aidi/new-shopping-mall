@@ -41,7 +41,7 @@
 import { ref, reactive, toRefs, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import { get } from "@/utils/request";
-const categories = [//放在第一位 因为马上就用到了 error: 'categories' is not defined
+const categories = [//放在第一位 因为马上就用到了 error: categories 
   { name: "全部商品", tab: "all" },
   { name: "秒杀", tab: "seckill" },
   { name: "新鲜水果", tab: "fruit" },

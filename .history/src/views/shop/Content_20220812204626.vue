@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="product">
-      <div class="product__item" v-for="item in list" :key="item._id">
+      <div class="product__item" v-for="item in contentList" :key="item._id">
         <img
           class="product__item__img"
           src="http://www.dell-lee.com/imgs/vue3/near.png"
@@ -38,14 +38,10 @@
   </div>
 </template>
 <script>
-import { ref, reactive, toRefs, watchEffect } from "vue";
+import { reactive, toRefs } from "vue";
 import { useRoute } from "vue-router";
 import { get } from "@/utils/request";
-const categories = [//放在第一位 因为马上就用到了 error: 'categories' is not defined
-  { name: "全部商品", tab: "all" },
-  { name: "秒杀", tab: "seckill" },
-  { name: "新鲜水果", tab: "fruit" },
-];
+
 //Tab的相关逻辑
 const useTabEffect = () => {
   const currentTab = ref(categories[0].tab);
@@ -55,34 +51,57 @@ const useTabEffect = () => {
   return { currentTab, handleTabClick };
 };
 
-//商家列表的相关内容(依据currentTab为参数 不同而不同)
-const useCurrentListEffect = (currentTab) => {
+//商家列表的相关内容(依据tab不同而不同)
+const useCurrentListEffect = () => {
   const route = useRoute();
   const shopId = route.params.id;
-  const content = reactive({ list: [] });
+  const content = reactive({ list: [] })
 
   const getContentData = async () => {
     const result = await get(`/api/shop/${shopId}/product`, {
-      tab: currentTab.value,
-    });
-    if (result?.errno === 0 && result?.data?.length) {
-      content.list = result.data;
-    }
-  };
-
-  watchEffect(() => {
-    getContentData();
-  });
-
-  const { list } = toRefs(content);
-  return { list };
+      tab: currentTab.value
+    })
+    if(result?.errno ===0)
+  }
+  return {list}
 };
 export default {
   name: "Content",
   setup() {
-    const { currentTab, handleTabClick } = useTabEffect();
-    const { list } = useCurrentListEffect(currentTab);
-    return { categories, currentTab, handleTabClick, list };
+    const categories = [
+      {
+        name: "全部商品",
+        tab: "all",
+      },
+      {
+        name: "秒杀",
+        tab: "seckill",
+      },
+      {
+        name: "新鲜水果",
+        tab: "fruit",
+      },
+    ];
+    const data = reactive({
+      currentTab: categories[0].tab,
+      contentList: [],
+    });
+    const handleCategoryClick = (tab) => {
+      //点击之后执行 1.根据tab切换currentTab 2.根据tab进行数据渲染 各商家的数据
+      data.currentTab = tab;
+      getContentData(tab);
+    };
+    const getContentData = async (tab) => {
+      //获取一次当前tab的商家
+      const result = await get(`/api/shop/${shopId}/product`, { tab });
+      if (result?.errno === 0 && result?.data?.length) {
+        data.contentList = result.data;
+      }
+    };
+    getContentData("all");
+    const { currentTab, contentList } = toRefs(data);
+
+    return { categories, currentTab, contentList, handleCategoryClick };
   },
 };
 </script>
