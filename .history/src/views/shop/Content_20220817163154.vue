@@ -30,7 +30,7 @@
             class="product__item__number__minus"
             @click="
               () => {
-                changeCartItemInfo(shopId, item._id, item, -1);
+                changeCartItemInfo(shopId, item._id, item, 1);
               }
             "
             >-</span
@@ -97,8 +97,12 @@ const useCurrentListEffect = (currentTab, shopId) => {
 const useCartEffect = () => {
   const store = useStore();
   const { cartList } = toRefs(store.state); //store里的数据是reactive的
-  const changeCartItemInfo = (shopId, productId, productInfo, num) => {
-    store.commit("changeCartItemInfo", { shopId,productId,productInfo,num,});
+  const changeCartItemInfo = (shopId, productId, productInfo) => {
+    store.commit("changeCartItemInfo", {
+      shopId,
+      productId,
+      productInfo,
+    });
   };
   return { cartList, changeCartItemInfo };
 };

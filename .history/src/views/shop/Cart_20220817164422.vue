@@ -9,7 +9,7 @@
         <div class="check__icon__tag">{{total}}</div>
       </div>
       <div class="check__info">
-        总计：<span class="check__info__price">&yen; {{price}}</span>
+        总计：<span class="check__info__price">&yen;127</span>
       </div>
       <div class="check__btn">去结算</div>
     </div>
@@ -103,7 +103,7 @@ export default {
     font-size: .12rem;
     &__price {
       line-height: .49rem;
-      color: #f80808;
+      color: #E9E9E9;
       font-size: .18rem;
     }
   }

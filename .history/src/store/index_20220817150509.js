@@ -20,8 +20,9 @@ export default Vuex.createStore({
     }
   },
   mutations: {
-    changeCartItemInfo(state, payload) {
+    addItemToCart(state, payload) {
       const { shopId, productId, productInfo } = payload;
+      console.log()
       let shopInfo = state.cartList[shopId]
       if(!shopInfo) { shopInfo = {} }
       let product = shopInfo[productId]
@@ -29,8 +30,7 @@ export default Vuex.createStore({
         product = productInfo
         product.count = 0
       }
-      product.count = product.count + payload.num
-      if(product.count < 0) { product.count = 0 }
+      product.count += 1
       shopInfo[productId] = product
       state.cartList[shopId] = shopInfo
     }

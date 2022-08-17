@@ -15,7 +15,10 @@
     </div>
     <div class="product">
       <div class="product__item" v-for="item in list" :key="item._id">
-        <img class="product__item__img" :src="item.imgUrl" />
+        <img
+          class="product__item__img"
+          :src="item.imgUrl"
+        />
         <div class="product__item__detail">
           <h4 class="product__item__title">{{ item.name }}</h4>
           <p class="product__item__sales">月售{{ item.sales }}件</p>
@@ -26,27 +29,19 @@
         </div>
 
         <div class="product__item__number">
-          <span
-            class="product__item__number__minus"
-            @click="
-              () => {
-                changeCartItemInfo(shopId, item._id, item, -1);
-              }
-            "
-            >-</span
-          >
 
-          {{ cartList?.[shopId]?.[item._id]?.count || 0 }}
+          <span 
+          class="product__item__number__minus"
+          @click="() => { changeCartItemInfo(shopId, item._id, item, 1) }"
+          >-</span>
 
-          <span
-            class="product__item__number__plus"
-            @click="
-              () => {
-                changeCartItemInfo(shopId, item._id, item, 1);
-              }
-            "
-            >+</span
-          >
+          {{cartList?.[shopId]?.[item._id]?.count || 0}}
+
+          <span 
+          class="product__item__number__plus"
+          @click="() => { changeCartItemInfo(shopId, item._id, item, 1) }"
+          >+</span>
+
         </div>
       </div>
     </div>
@@ -96,9 +91,13 @@ const useCurrentListEffect = (currentTab, shopId) => {
 // 购物车相关逻辑
 const useCartEffect = () => {
   const store = useStore();
-  const { cartList } = toRefs(store.state); //store里的数据是reactive的
-  const changeCartItemInfo = (shopId, productId, productInfo, num) => {
-    store.commit("changeCartItemInfo", { shopId,productId,productInfo,num,});
+  const { cartList } = toRefs(store.state);//store里的数据是reactive的
+  const changeCartItemInfo = (shopId, productId, productInfo) => {
+    store.commit("changeCartItemInfo", {
+      shopId,
+      productId,
+      productInfo,
+    });
   };
   return { cartList, changeCartItemInfo };
 };
@@ -107,18 +106,12 @@ export default {
   name: "Content",
   setup() {
     const route = useRoute();
-    const shopId = route.params.id; //shopId提取到setup函数里 是因为多个函数都需要使用
+    const shopId = route.params.id;//shopId提取到setup函数里 是因为多个函数都需要使用
     const { currentTab, handleTabClick } = useTabEffect();
     const { list } = useCurrentListEffect(currentTab, shopId);
-    const { cartList, changeCartItemInfo } = useCartEffect();
-    return {
-      categories,
-      currentTab,
-      handleTabClick,
-      list,
-      cartList,
-      changeCartItemInfo,
-      shopId,
+    const { cartList, changeCartItemInfo } = useCartEffect()
+    return { categories, currentTab, handleTabClick, list,
+             cartList, changeCartItemInfo, shopId
     };
   },
 };

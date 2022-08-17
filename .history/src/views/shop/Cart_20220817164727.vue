@@ -103,7 +103,7 @@ export default {
     font-size: .12rem;
     &__price {
       line-height: .49rem;
-      color: #f80808;
+      color: #eb0808;
       font-size: .18rem;
     }
   }

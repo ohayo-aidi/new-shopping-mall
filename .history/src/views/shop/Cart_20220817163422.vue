@@ -6,10 +6,10 @@
           src="http://www.dell-lee.com/imgs/vue3/basket.png"
           class="check__icon__img"
         />
-        <div class="check__icon__tag">{{total}}</div>
+        <div class="check__icon__tag">1</div>
       </div>
       <div class="check__info">
-        总计：<span class="check__info__price">&yen; {{price}}</span>
+        总计：<span class="check__info__price">&yen;127</span>
       </div>
       <div class="check__btn">去结算</div>
     </div>
@@ -21,44 +21,9 @@ import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 
 //获取购物车信息逻辑（1.选了多少物品 2.总计）
-const useCartEffect = () => {
-    const store = useStore()
-    const route = useRoute()
-    const shopId = route.params.id
-    const cartList = store.state.cartList
-
-    const total = computed( () => {
-      const productList = cartList[shopId]
-      let count = 0
-      if(productList){
-        for(let i in productList){
-          const product = productList[i]
-          count+=product.count
-        }
-      }
-      return count
-    })
-
-    const price = computed( () => {
-      const productList = cartList[shopId]
-      let count = 0
-      if(productList){
-        for(let i in productList){
-          const product = productList[i]
-          count += (product.count * product.price)
-        }
-      }
-      return count.toFixed(2)//保留俩位小数
-    })
-
-  return { total, price }
-}
+const useCartEffect = 
 export default {
   name: "Cart",
-  setup(){
-    const { total, price } = useCartEffect()
-    return { total, price }
-  }
 };
 </script>
 <style lang="scss" scoped>
@@ -103,7 +68,7 @@ export default {
     font-size: .12rem;
     &__price {
       line-height: .49rem;
-      color: #f80808;
+      color: #E9E9E9;
       font-size: .18rem;
     }
   }

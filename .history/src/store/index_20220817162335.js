@@ -29,6 +29,7 @@ export default Vuex.createStore({
         product = productInfo
         product.count = 0
       }
+      
       product.count = product.count + payload.num
       if(product.count < 0) { product.count = 0 }
       shopInfo[productId] = product

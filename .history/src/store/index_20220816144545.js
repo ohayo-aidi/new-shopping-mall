@@ -2,11 +2,11 @@ import Vuex from 'vuex'
 
 export default Vuex.createStore({
   state: {
-    cartList: {//一开始购物车是没有内容的 以下内容仅是为了展示层级解构
-      // // 第一层级是商铺的id(不同的商铺添加到购物车)
+    cartList: {
+      // 第一层级是商铺的id
       // shopId: {
-      //   // 第二层是商品id(同一店铺下 不同的商品)
-      //   // 第二层内容是商品内容以及购物数量
+        // 第二层是商品id
+        // 第二层内容是商品内容以及购物数量
       //   productId: {
       //     _id: '1',
       //     name: '番茄250g/份',
@@ -20,7 +20,7 @@ export default Vuex.createStore({
     }
   },
   mutations: {
-    changeCartItemInfo(state, payload) {
+    addItemToCart(state, payload) {
       const { shopId, productId, productInfo } = payload;
       let shopInfo = state.cartList[shopId]
       if(!shopInfo) { shopInfo = {} }
@@ -29,8 +29,7 @@ export default Vuex.createStore({
         product = productInfo
         product.count = 0
       }
-      product.count = product.count + payload.num
-      if(product.count < 0) { product.count = 0 }
+      product.count += 1
       shopInfo[productId] = product
       state.cartList[shopId] = shopInfo
     }

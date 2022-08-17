@@ -30,7 +30,7 @@
             class="product__item__number__minus"
             @click="
               () => {
-                changeCartItemInfo(shopId, item._id, item, -1);
+                changeCartItemInfo(shopId, item._id, item, 1);
               }
             "
             >-</span
