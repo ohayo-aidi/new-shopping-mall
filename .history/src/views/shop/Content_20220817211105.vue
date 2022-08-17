@@ -56,6 +56,7 @@
 import { ref, reactive, toRefs, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import { get } from "@/utils/request";
+import { useStore } from "vuex";
 import { useCommonCartEffect } from './commonCartEffect'
 
 const categories = [
@@ -92,6 +93,16 @@ const useCurrentListEffect = (currentTab, shopId) => {
 
   const { list } = toRefs(content);
   return { list };
+};
+
+// 购物车相关逻辑
+const useCartEffect = () => {
+  const store = useStore();
+  const { cartList } = toRefs(store.state); //store里的数据是reactive的
+  const changeCartItemInfo = (shopId, productId, productInfo, num) => {
+    store.commit("changeCartItemInfo", { shopId,productId,productInfo,num,});
+  };
+  return { cartList, changeCartItemInfo };
 };
 
 export default {

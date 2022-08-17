@@ -1,6 +1,5 @@
 <template>
   <div class="cart">
-
     <div class="product">
       <template
         v-for="item in productList"
@@ -29,7 +28,7 @@
         </div>
       </template>
     </div>
-
+    
     <div class="check">
       <div class="check__icon">
         <img
@@ -51,7 +50,7 @@ import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 import { useCommonCartEffect } from './commonCartEffect'
 
-//获取购物车信息逻辑（1.total 2.price 3.productList）
+//获取购物车信息逻辑（1.选了多少物品 2.总计）
 const useCartEffect = () => {
     const store = useStore()
     const route = useRoute()
@@ -82,99 +81,23 @@ const useCartEffect = () => {
       return count.toFixed(2)//保留俩位小数
     })
 
-    const productList = computed( () => {
-      const productList = cartList[shopId] || []
-      return productList
-    })
-
-
-  return { total, price, productList }
+  return { total, price }
 }
 export default {
   name: "Cart",
   setup(){
-    const { total, price, productList } = useCartEffect()
+    const { total, price } = useCartEffect()
     const { changeCartItemInfo } = useCommonCartEffect()
-    return { total, price, changeCartItemInfo, productList }
+    return { total, price, changeCartItemInfo }
   }
 };
 </script>
 <style lang="scss" scoped>
-@import '@/style/mixins.scss';
-@import '@/style/variables.scss';
 .cart {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-}
-.product {
-  overflow-y: scroll;
-  flex: 1;
-  background: #FFF;
-  &__item {
-    position: relative;
-    display: flex;
-    padding: .12rem 0;
-    margin: 0 .16rem;
-    border-bottom: .01rem solid $content-bgColor;
-    &__detail {
-      overflow: hidden;
-    }
-    &__img {
-      width: .46rem;
-      height: .46rem;
-      margin-right: .16rem;
-    }
-    &__title {
-      margin: 0;
-      line-height: .2rem;
-      font-size: .14rem;
-      color: $content-fontcolor;
-      @include ellipsis;
-    }
-    &__price {
-      margin: .06rem 0 0 0;
-      line-height: .2rem;
-      font-size: .14rem;
-      color: $hightlight-fontColor;
-    }
-    &__yen {
-      font-size: .12rem;
-    }
-    &__origin {
-      margin-left: .06rem;
-      line-height: .2rem;
-      font-size: .12rem;
-      color: $light-fontColor;
-      text-decoration: line-through;
-    }
-    .product__number {
-      position: absolute;
-      right: 0;
-      bottom: .12rem;
-      &__minus, &__plus
-       {
-        display: inline-block;
-        width: .2rem;
-        height: .2rem;
-        line-height: .16rem;;
-        border-radius: 50%;
-        font-size: .2rem;
-        text-align: center;
-      }
-      &__minus {
-        border: .01rem solid $medium-fontColor;
-        color: $medium-fontColor;
-        margin-right: .05rem;
-      }
-      &__plus {
-        background: $btn-bgColor;
-        color: $bgColor;
-        margin-left: .05rem;
-      }
-    }
-  }
 }
 .check {
   display: flex;

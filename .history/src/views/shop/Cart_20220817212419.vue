@@ -84,7 +84,7 @@ const useCartEffect = () => {
 
     const productList = computed( () => {
       const productList = cartList[shopId] || []
-      return productList
+      return 
     })
 
 

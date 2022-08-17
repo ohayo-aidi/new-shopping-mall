@@ -82,10 +82,7 @@ const useCartEffect = () => {
       return count.toFixed(2)//保留俩位小数
     })
 
-    const productList = computed( () => {
-      const productList = cartList[shopId] || []
-      return productList
-    })
+    const productList
 
 
   return { total, price, productList }

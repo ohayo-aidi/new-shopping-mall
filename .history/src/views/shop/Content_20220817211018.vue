@@ -56,8 +56,8 @@
 import { ref, reactive, toRefs, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import { get } from "@/utils/request";
+import { useStore } from "vuex";
 import { useCommonCartEffect } from './commonCartEffect'
-
 const categories = [
   //放在第一位 因为马上就用到了 error: 'categories' is not defined
   { name: "全部商品", tab: "all" },
@@ -94,6 +94,16 @@ const useCurrentListEffect = (currentTab, shopId) => {
   return { list };
 };
 
+// 购物车相关逻辑
+const useCartEffect = () => {
+  const store = useStore();
+  const { cartList } = toRefs(store.state); //store里的数据是reactive的
+  const changeCartItemInfo = (shopId, productId, productInfo, num) => {
+    store.commit("changeCartItemInfo", { shopId,productId,productInfo,num,});
+  };
+  return { cartList, changeCartItemInfo };
+};
+
 export default {
   name: "Content",
   setup() {
@@ -101,7 +111,7 @@ export default {
     const shopId = route.params.id; //shopId提取到setup函数里 是因为多个函数都需要使用
     const { currentTab, handleTabClick } = useTabEffect();
     const { list } = useCurrentListEffect(currentTab, shopId);
-    const { cartList, changeCartItemInfo } = useCommonCartEffect()
+    const { cartList, changeCartItemInfo } = useCartEffect();
     return {
       categories,
       currentTab,

@@ -51,7 +51,7 @@ import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 import { useCommonCartEffect } from './commonCartEffect'
 
-//获取购物车信息逻辑（1.total 2.price 3.productList）
+//获取购物车信息逻辑（1.选了多少物品 2.总计 3.productList）
 const useCartEffect = () => {
     const store = useStore()
     const route = useRoute()
@@ -82,10 +82,6 @@ const useCartEffect = () => {
       return count.toFixed(2)//保留俩位小数
     })
 
-    const productList = computed( () => {
-      const productList = cartList[shopId] || []
-      return productList
-    })
 
 
   return { total, price, productList }

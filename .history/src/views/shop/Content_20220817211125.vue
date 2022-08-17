@@ -56,6 +56,7 @@
 import { ref, reactive, toRefs, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 import { get } from "@/utils/request";
+import { useStore } from "vuex";
 import { useCommonCartEffect } from './commonCartEffect'
 
 const categories = [
