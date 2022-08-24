@@ -1,8 +1,7 @@
 <template>
-  <div class="mask" v-if="showCart" />
   <div class="cart">
     <!--整个product层是添加进购物车后才显示的-->
-    <div class="product" v-if="showCart">
+    <div class="product">
       <div class="product__header">
         <div
           class="product__header__all"
@@ -82,7 +81,7 @@
   </div>
 </template>
 <script>
-import { computed, ref, reactive, toRefs } from "vue";
+import { computed } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import { useCommonCartEffect } from "./commonCartEffect";
@@ -126,17 +125,17 @@ const useCartEffect = () => {
   });
 
   const allChecked = computed(() => {
-    const productList = cartList[shopId];
-    let result = true;
-    if (productList) {
-      for (let i in productList) {
-        const product = productList[i];
-        if (product.count > 0 && !product.check) {
-          result = false;
+    const productList = cartList[shopId]
+    let result = true
+    if(productList){
+      for(let i in productList){
+        const product = productList[i]
+        if(product.count > 0 && !product.check){
+          result = false
         }
       }
     }
-    return result;
+    return result
   });
 
   const changeCartItemChecked = (shopId, productId) => {
@@ -158,7 +157,7 @@ const useCartEffect = () => {
     changeCartItemChecked,
     clearCartProducts,
     setCartItemsChecked,
-    allChecked,
+    allChecked
   };
 };
 export default {
@@ -167,10 +166,7 @@ export default {
     const route = useRoute();
     const shopId = route.params.id; //err: shopId需要在setup暴露出来 上面template层需要通过其获取很多东西
 
-    const showCart = ref(false);
-    const handleCartShowChange = () => {
-      showCart.value = !showCart.value;
-    };
+    const showC
     const {
       total,
       price,
@@ -178,7 +174,7 @@ export default {
       changeCartItemChecked,
       clearCartProducts,
       setCartItemsChecked,
-      allChecked,
+      allChecked
     } = useCartEffect();
     const { changeCartItemInfo } = useCommonCartEffect();
     return {
@@ -190,9 +186,7 @@ export default {
       clearCartProducts,
       shopId,
       setCartItemsChecked,
-      allChecked,
-      showCart,
-      handleCartShowChange,
+      allChecked
     };
   },
 };
@@ -200,22 +194,11 @@ export default {
 <style lang="scss" scoped>
 @import "@/style/mixins.scss";
 @import "@/style/variables.scss";
-.mask {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  background: rgba(0, 0, 0, .5);
-  z-index: 1;
-}
 .cart {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 2;
-  background-color: #FFF;
 }
 .product {
   overflow-y: scroll;

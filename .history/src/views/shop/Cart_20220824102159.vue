@@ -200,7 +200,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/style/mixins.scss";
 @import "@/style/variables.scss";
-.mask {
+.musk {
   position: fixed;
   left: 0;
   right: 0;

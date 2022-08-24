@@ -1,5 +1,5 @@
 <template>
-  <div class="mask" v-if="showCart" />
+  <div class="mask" v-if="showChart" />
   <div class="cart">
     <!--整个product层是添加进购物车后才显示的-->
     <div class="product" v-if="showCart">
@@ -200,7 +200,7 @@ export default {
 <style lang="scss" scoped>
 @import "@/style/mixins.scss";
 @import "@/style/variables.scss";
-.mask {
+.musk {
   position: fixed;
   left: 0;
   right: 0;
@@ -214,8 +214,7 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 2;
-  background-color: #FFF;
+  z-
 }
 .product {
   overflow-y: scroll;
