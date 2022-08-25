@@ -78,8 +78,7 @@
       <div class="check__info">
         总计：<span class="check__info__price">&yen; {{ price }}</span>
       </div>
-      <div class="check__btn">
-        <router-link :to="{name: 'Home'}">去结算</router-link> </div>
+      <div class="check__btn">去结算</div>
     </div>
   </div>
 </template>
@@ -170,14 +169,18 @@ const toggleCartEffect = () => {
   const handleCartShowChange = () => {
     showCart.value = !showCart.value;
   };
-  return { showCart, handleCartShowChange }
+  return { showCart, }
 };
 export default {
   name: "Cart",
   setup() {
     const route = useRoute();
     const shopId = route.params.id; //err: shopId需要在setup暴露出来 上面template层需要通过其获取很多东西
-    const { showCart, handleCartShowChange } = toggleCartEffect()
+
+    const showCart = ref(false);
+    const handleCartShowChange = () => {
+      showCart.value = !showCart.value;
+    };
     const {
       total,
       price,
@@ -368,10 +371,6 @@ export default {
     text-align: center;
     color: #fff;
     font-size: 0.14rem;
-    a{
-      color: #fff;
-      text-decoration: none;
-    }
   }
 }
 </style>

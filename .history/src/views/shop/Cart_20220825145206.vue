@@ -370,7 +370,6 @@ export default {
     font-size: 0.14rem;
     a{
       color: #fff;
-      text-decoration: none;
     }
   }
 }

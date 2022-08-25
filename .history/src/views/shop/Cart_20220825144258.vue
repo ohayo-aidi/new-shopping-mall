@@ -15,11 +15,7 @@
           >全选
         </div>
         <div class="product__header__clear">
-          <span
-            class="product__Header__clear__btn"
-            @click="() => clearCartProducts(shopId)"
-            >清空购物车</span
-          >
+          <span class="product__Header__clear__btn" @click="() => clearCartProducts(shopId)">清空购物车</span>
         </div>
       </div>
       <template v-for="item in productList" :key="item._id">
@@ -78,8 +74,7 @@
       <div class="check__info">
         总计：<span class="check__info__price">&yen; {{ price }}</span>
       </div>
-      <div class="check__btn">
-        <router-link :to="{name: 'Home'}">去结算</router-link> </div>
+      <div class="check__btn">去结算</div>
     </div>
   </div>
 </template>
@@ -163,21 +158,16 @@ const useCartEffect = () => {
     allChecked,
   };
 };
-
-//展示 隐藏购物车的逻辑
-const toggleCartEffect = () => {
-  const showCart = ref(false);
-  const handleCartShowChange = () => {
-    showCart.value = !showCart.value;
-  };
-  return { showCart, handleCartShowChange }
-};
 export default {
   name: "Cart",
   setup() {
     const route = useRoute();
     const shopId = route.params.id; //err: shopId需要在setup暴露出来 上面template层需要通过其获取很多东西
-    const { showCart, handleCartShowChange } = toggleCartEffect()
+
+    const showCart = ref(false);
+    const handleCartShowChange = () => {
+      showCart.value = !showCart.value;
+    };
     const {
       total,
       price,
@@ -248,8 +238,8 @@ export default {
       flex: 1;
       margin-right: 0.16rem;
       text-align: right;
-      &__btn {
-        // display: inline-block;
+      &__btn{
+        display: in;
       }
     }
   }
@@ -368,10 +358,6 @@ export default {
     text-align: center;
     color: #fff;
     font-size: 0.14rem;
-    a{
-      color: #fff;
-      text-decoration: none;
-    }
   }
 }
 </style>

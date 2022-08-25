@@ -368,10 +368,7 @@ export default {
     text-align: center;
     color: #fff;
     font-size: 0.14rem;
-    a{
-      color: #fff;
-      text-decoration: none;
-    }
+    a
   }
 }
 </style>
