@@ -38,7 +38,7 @@
 import { reactive, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 import { post } from '@/utils/request'
-import { useToastEffect } from '@/components/Toast.vue'
+import  { useToastEffect } from '@/components/Toast.vue'
 // 处理注册逻辑(需要Toast组件)
 const useRegisterEffect = (showToast) => {
   const router = useRouter()

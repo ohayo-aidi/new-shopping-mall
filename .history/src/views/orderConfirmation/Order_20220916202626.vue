@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="mask" v-show="showConfirm" @click="handleShowConfirmChange(false)">
-    <div class="mask__content" @click.stop>
+    <div class="mask__content" >
       <h3 class="mask__content__title">确认要离开收银台？</h3>
       <p class="mask__content__desc">请尽快完成支付，否则将被取消</p>
       <div class="mask__content__btns">
@@ -41,11 +41,6 @@ const useShowMaskEffect = () => {
   }
   return { showConfirm, handleShowConfirmChange }
 }
-
-// // 下单相关逻辑
-// const useMakeOrderEffect = () => {
-
-// }
 export default {
   name: 'Order',
   setup () {

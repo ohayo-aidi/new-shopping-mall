@@ -42,10 +42,7 @@ const useShowMaskEffect = () => {
   return { showConfirm, handleShowConfirmChange }
 }
 
-// // 下单相关逻辑
-// const useMakeOrderEffect = () => {
-
-// }
+//
 export default {
   name: 'Order',
   setup () {

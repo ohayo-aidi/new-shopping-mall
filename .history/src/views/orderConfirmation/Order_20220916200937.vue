@@ -3,12 +3,10 @@
     <div class="order__price">
       实付金额 <b>¥{{ calculations.price }}</b>
     </div>
-    <div class="order__btn" @click="handleShowConfirmChange(true)">
-      提交订单
-    </div>
+    <div class="order__btn">提交订单</div>
   </div>
-  <div class="mask" v-show="showConfirm" @click="handleShowConfirmChange(false)">
-    <div class="mask__content" @click.stop>
+  <div class="mask">
+    <div class="mask__content">
       <h3 class="mask__content__title">确认要离开收银台？</h3>
       <p class="mask__content__desc">请尽快完成支付，否则将被取消</p>
       <div class="mask__content__btns">
@@ -36,36 +34,24 @@ import { ref } from 'vue'
 // 蒙层相关逻辑
 const useShowMaskEffect = () => {
   const showConfirm = ref(false)
-  const handleShowConfirmChange = (status) => {
-    showConfirm.value = status
+  const handleShowConfirmChange = () => {
+    showConfirm
   }
-  return { showConfirm, handleShowConfirmChange }
+  return { showConfirm }
 }
-
-// // 下单相关逻辑
-// const useMakeOrderEffect = () => {
-
-// }
 export default {
   name: 'Order',
   setup () {
     const route = useRoute()
     const shopId = route.params.id
     const { calculations } = useCommonCartEffect(shopId)
-    const { showConfirm, handleShowConfirmChange } = useShowMaskEffect()
     const handleCancelOrder = () => {
       alert('cancel')
     }
     const handleConfirmOrder = () => {
       alert('confirm')
     }
-    return {
-      showConfirm,
-      handleShowConfirmChange,
-      calculations,
-      handleCancelOrder,
-      handleConfirmOrder
-    }
+    return { calculations, handleCancelOrder, handleConfirmOrder }
   }
 }
 </script>

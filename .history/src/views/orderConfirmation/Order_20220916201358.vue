@@ -7,8 +7,8 @@
       提交订单
     </div>
   </div>
-  <div class="mask" v-show="showConfirm" @click="handleShowConfirmChange(false)">
-    <div class="mask__content" @click.stop>
+  <div class="mask" v-show="showConfirm">
+    <div class="mask__content">
       <h3 class="mask__content__title">确认要离开收银台？</h3>
       <p class="mask__content__desc">请尽快完成支付，否则将被取消</p>
       <div class="mask__content__btns">
@@ -29,45 +29,39 @@
   </div>
 </template>
 <script>
-import { useCommonCartEffect } from '@/effects/commonCartEffect'
-import { useRoute } from 'vue-router'
-import { ref } from 'vue'
+import { useCommonCartEffect } from "@/effects/commonCartEffect";
+import { useRoute } from "vue-router";
+import { ref } from "vue";
 
 // 蒙层相关逻辑
 const useShowMaskEffect = () => {
-  const showConfirm = ref(false)
+  const showConfirm = ref(false);
   const handleShowConfirmChange = (status) => {
-    showConfirm.value = status
-  }
-  return { showConfirm, handleShowConfirmChange }
-}
-
-// // 下单相关逻辑
-// const useMakeOrderEffect = () => {
-
-// }
+    showConfirm.value = status;
+  };
+  return { showConfirm, handleShowConfirmChange };
+};
 export default {
-  name: 'Order',
-  setup () {
-    const route = useRoute()
-    const shopId = route.params.id
-    const { calculations } = useCommonCartEffect(shopId)
-    const { showConfirm, handleShowConfirmChange } = useShowMaskEffect()
+  name: "Order",
+  setup() {
+    const route = useRoute();
+    const shopId = route.params.id;
+    const { calculations } = useCommonCartEffect(shopId);
+    const { showConfirm, handleShowConfirmChange } = useShowMaskEffect();
     const handleCancelOrder = () => {
-      alert('cancel')
-    }
+      alert("cancel");
+    };
     const handleConfirmOrder = () => {
-      alert('confirm')
-    }
+      alert("confirm");
+    };
     return {
       showConfirm,
-      handleShowConfirmChange,
-      calculations,
+      handleShowConfirmChangecalculations,
       handleCancelOrder,
-      handleConfirmOrder
-    }
-  }
-}
+      handleConfirmOrder,
+    };
+  },
+};
 </script>
 <style lang="scss" scoped>
 @import "@/style/variables.scss";
