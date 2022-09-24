@@ -2,7 +2,7 @@
   <div class="top">
     <div class="top__header">
       <div class="iconfont top__header__back" @click="handleBackClick">
-        &#xe697;
+        &#xe6f2;
       </div>
       确认订单
     </div>
@@ -48,6 +48,7 @@ export default {
       position: absolute;
       left: 0.18rem;
       font-size: 0.22rem;
+      col
     }
   }
   &__receiver {

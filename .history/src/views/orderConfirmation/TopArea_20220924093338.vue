@@ -2,7 +2,7 @@
   <div class="top">
     <div class="top__header">
       <div class="iconfont top__header__back" @click="handleBackClick">
-        &#xe697;
+        &#xe6f2;
       </div>
       确认订单
     </div>
@@ -85,6 +85,7 @@ export default {
       right: 0.16rem;
       top: 0.5rem;
       color: #666;
+      back
       font-size: 0.2rem;
     }
   }

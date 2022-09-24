@@ -45,8 +45,7 @@ const useShowMaskEffect = () => {
 }
 
 // 下单相关逻辑
-const useMakeOrderEffect = (shopId, productList, shopName) => {
-  const router = useRouter()
+const useMakeOrderEffect = (productList, shopName) => {
   const handleConfirmOrder = async (isCanceled) => {
     const products = []
     for (const i in productList.value) {
@@ -76,6 +75,7 @@ export default {
   name: 'Order',
   setup () {
     const route = useRoute()
+    const router = useRouter()
     const shopId = parseInt(route.params.id, 10)
     const { calculations, productList, shopName } = useCommonCartEffect(shopId)
     const { showConfirm, handleShowConfirmChange } = useShowMaskEffect()

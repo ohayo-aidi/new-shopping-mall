@@ -45,41 +45,42 @@ const useShowMaskEffect = () => {
 }
 
 // 下单相关逻辑
-const useMakeOrderEffect = (shopId, productList, shopName) => {
-  const router = useRouter()
+const useMakeOrderEffect = () => {
   const handleConfirmOrder = async (isCanceled) => {
-    const products = []
-    for (const i in productList.value) {
-      const product = productList.value[i]
-      products.push({ id: parseInt(product._id, 10), num: product.count })
-    }
-    // console.log(products)
-    try {
-      const result = await post('/api/order', {
-        addressId: 1,
-        shopId,
-        shopName: shopName.value,
-        isCanceled,
-        products
-      })
-      if (result?.errno === 0) { // 成功获取
-        store.commit('clearCartData', shopId)
-        router.push({ name: 'Home' })
-      }
-    } catch (e) {
-      // 提示下单失败
-    }
+    
   }
-  return { handleConfirmOrder }
 }
 export default {
   name: 'Order',
   setup () {
     const route = useRoute()
+    const router = useRouter()
     const shopId = parseInt(route.params.id, 10)
     const { calculations, productList, shopName } = useCommonCartEffect(shopId)
     const { showConfirm, handleShowConfirmChange } = useShowMaskEffect()
-    const { handleConfirmOrder } = useMakeOrderEffect(shopId, productList, shopName)
+    const handleConfirmOrder = async (isCanceled) => {
+      const products = []
+      for (const i in productList.value) {
+        const product = productList.value[i]
+        products.push({ id: parseInt(product._id, 10), num: product.count })
+      }
+      // console.log(products)
+      try {
+        const result = await post('/api/order', {
+          addressId: 1,
+          shopId,
+          shopName: shopName.value,
+          isCanceled,
+          products
+        })
+        if (result?.errno === 0) { // 成功获取
+          store.commit('clearCartData', shopId)
+          router.push({ name: 'Home' })
+        }
+      } catch (e) {
+        // 提示下单失败
+      }
+    }
     return {
       showConfirm,
       handleShowConfirmChange,

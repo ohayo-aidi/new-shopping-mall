@@ -76,6 +76,7 @@ export default {
   name: 'Order',
   setup () {
     const route = useRoute()
+
     const shopId = parseInt(route.params.id, 10)
     const { calculations, productList, shopName } = useCommonCartEffect(shopId)
     const { showConfirm, handleShowConfirmChange } = useShowMaskEffect()
