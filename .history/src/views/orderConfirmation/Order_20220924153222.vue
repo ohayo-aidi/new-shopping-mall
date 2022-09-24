@@ -64,7 +64,7 @@ const useMakeOrderEffect = (shopId, productList, shopName) => {
       })
       if (result?.errno === 0) { // 成功获取
         store.commit('clearCartData', shopId)
-        router.push({ name: 'OrderList' })
+        router.push({ name: 'Order' })
       }
     } catch (e) {
       // 提示下单失败

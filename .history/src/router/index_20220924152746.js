@@ -28,7 +28,7 @@ const routes = [
     name: 'OrderList',
     component: () =>
       import(
-        /* webpackChunkName: "order list" */ '@/views/orderList/OrderList'
+        /* webpackChunkName: "Order" */ '@/views/orderConfirmation/OrderConfirmation'
       )
   },
   {

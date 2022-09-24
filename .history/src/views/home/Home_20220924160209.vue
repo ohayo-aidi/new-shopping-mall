@@ -3,7 +3,7 @@
     <StaticPart />
     <Nearby />
   </div>
-  <Docker :currentIndex="0" />
+  <Docker :current/>
 </template>
 <script>
 import StaticPart from './StaticPart.vue'
