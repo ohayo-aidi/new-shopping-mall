@@ -39,8 +39,8 @@
 
 <script>
 import { reactive, toRefs } from 'vue'
-import { get } from '@/utils/request'
-import Docker from '@/components/Docker.vue'
+import { get } from '../../utils/request'
+import Docker from '../../components/Docker'
 
 // 处理订单列表逻辑
 const useOrderListEffect = () => {

@@ -39,12 +39,12 @@
 
 <script>
 import { reactive, toRefs } from 'vue'
-import { get } from '@/utils/request'
-import Docker from '@/components/Docker.vue'
+import { get } from '../../utils/request'
+import Docker from '../../components/Docker'
 
 // 处理订单列表逻辑
 const useOrderListEffect = () => {
-  const data = reactive({ list: [] })
+  const data = reactive({ list:[]})
   const getNearbyList = async () => {
     const result = await get('/api/order')
     if (result?.errno === 0 && result?.data?.length) {
@@ -71,7 +71,7 @@ const useOrderListEffect = () => {
 export default {
   name: 'OrderList',
   components: { Docker },
-  setup () {
+  setup() {
     const { list } = useOrderListEffect()
     return { list }
   }
@@ -79,7 +79,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/style/variables.scss';
+@import '@/sty';
 .wrapper {
   overflow-y: auto;
   position: absolute;
