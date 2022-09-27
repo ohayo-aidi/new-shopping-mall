@@ -158,7 +158,7 @@ export default {
   &__item {
     line-height: 0.4rem;
     text-align: center;
-    font-size: .14rem;
+    font-size: .;
     color: #333;
     &--active {
       background: #fff;

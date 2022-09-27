@@ -115,7 +115,7 @@ export default {
     border-radius: 0.06rem;
     &__content {
       width: 100%;
-      margin-top: .12rem;
+      margin-top: ;
       line-height: 0.22rem;
       background: none;
       border: none;
